@@ -135,7 +135,11 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        pass
+        if self.is_empty():
+            raise SLLException()
+
+        else:
+            self.head.next = self.head.next.next
 
     def remove_back(self) -> None:
         """
