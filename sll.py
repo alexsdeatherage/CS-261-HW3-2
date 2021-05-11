@@ -201,7 +201,10 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        pass
+        if self.is_empty():
+            raise SLLException()
+        else:
+            return self.head.next.value
 
     def get_back(self) -> object:
         """
