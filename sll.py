@@ -89,7 +89,24 @@ class LinkedList:
         TODO: Write this implementation
         """
         # traverse the list to find last node
-        pass
+        self.rec_add_back(value, self.head.next)
+
+    def rec_add_back(self, value: object, current_node: SLNode):
+        """
+        Recursive function for add_back
+        """
+
+        if self.is_empty():
+            self.add_front(value)
+            return
+
+        elif current_node.next is self.tail:
+            new_node = SLNode(value)
+            new_node.next = current_node.next
+            current_node.next = new_node
+            return
+
+        return self.rec_add_back(value, current_node.next)
 
     def insert_at_index(self, index: int, value: object) -> None:
         """
