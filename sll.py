@@ -112,7 +112,24 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        pass
+        self.rec_insert_at_index(index, value, self.head, 0)
+
+    def rec_insert_at_index(self, index: int, value: object, current_node: SLNode, counter: int):
+
+        if index < 0 or index > self.length():
+            raise SLLException()
+
+        if index == 0:
+            self.add_front(value)
+            return
+
+        if index == counter:
+            new_node = SLNode(value)
+            new_node.next = current_node.next
+            current_node.next = new_node
+            return
+
+        return self.rec_insert_at_index(index, value, current_node.next, counter + 1)
 
     def remove_front(self) -> None:
         """
