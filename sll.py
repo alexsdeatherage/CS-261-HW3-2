@@ -145,7 +145,21 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        pass
+        self.rec_remove_back(self.head)
+
+    def rec_remove_back(self, current_node):
+        """...
+
+        """
+        if self.is_empty():
+            raise SLLException()
+
+        elif current_node.next.next is self.tail:
+            current_node.next.next = None
+            current_node.next = self.tail
+            return
+
+        return self.rec_remove_back(current_node.next)
 
     def remove_at_index(self, index: int) -> None:
         """
