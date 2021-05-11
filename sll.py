@@ -165,7 +165,37 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        pass
+
+        self.rec_remove_at_index(index, self.head, counter=0)
+
+    def rec_remove_at_index(self, index: int, current_node: SLNode, counter: int):
+        """...
+
+        """
+        if index < 0 or index > self.length() - 1:
+            raise SLLException()
+
+        if index == 0:
+            self.remove_front()
+            return
+
+        # if current_node.next.next is self.tail:
+        #     current_node.next.next = None
+        #     current_node.next = self.tail
+        #     return
+
+        if index == counter:
+            # new_node = SLNode(value)
+            # new_node.next = current_node.next
+            # current_node.next = new_node
+            prev_node = current_node
+            current_node = current_node.next
+            next_node = current_node.next
+
+            prev_node.next = next_node
+            return
+
+        return self.rec_remove_at_index(index, current_node.next, counter + 1)
 
     def get_front(self) -> object:
         """
@@ -262,17 +292,17 @@ if __name__ == '__main__':
     # print(list)
     #
     #
-    # print('\n# remove_at_index example 1')
-    # list = LinkedList([1, 2, 3, 4, 5, 6])
-    # print(list)
-    # for index in [0, 0, 0, 2, 2, -2]:
-    #     print('Removed at index:', index, ': ', end='')
-    #     try:
-    #         list.remove_at_index(index)
-    #         print(list)
-    #     except Exception as e:
-    #         print(type(e))
-    # print(list)
+    print('\n# remove_at_index example 1')
+    list = LinkedList([1, 2, 3, 4, 5, 6])
+    print(list)
+    for index in [0, 0, 0, 2, 2, -2]:
+        print('Removed at index:', index, ': ', end='')
+        try:
+            list.remove_at_index(index)
+            print(list)
+        except Exception as e:
+            print(type(e))
+    print(list)
     #
     #
     # print('\n# get_front example 1')
