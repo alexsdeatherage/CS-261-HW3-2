@@ -210,7 +210,17 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        pass
+        return self.rec_get_back(self.head)
+
+    def rec_get_back(self, current_node):
+        if self.is_empty():
+            raise SLLException()
+
+        if current_node.next is self.tail:
+            return current_node.value
+
+        return self.rec_get_back(current_node.next)
+
 
     def remove(self, value: object) -> bool:
         """
@@ -295,17 +305,17 @@ if __name__ == '__main__':
     # print(list)
     #
     #
-    print('\n# remove_at_index example 1')
-    list = LinkedList([1, 2, 3, 4, 5, 6])
-    print(list)
-    for index in [0, 0, 0, 2, 2, -2]:
-        print('Removed at index:', index, ': ', end='')
-        try:
-            list.remove_at_index(index)
-            print(list)
-        except Exception as e:
-            print(type(e))
-    print(list)
+    # print('\n# remove_at_index example 1')
+    # list = LinkedList([1, 2, 3, 4, 5, 6])
+    # print(list)
+    # for index in [0, 0, 0, 2, 2, -2]:
+    #     print('Removed at index:', index, ': ', end='')
+    #     try:
+    #         list.remove_at_index(index)
+    #         print(list)
+    #     except Exception as e:
+    #         print(type(e))
+    # print(list)
     #
     #
     # print('\n# get_front example 1')
