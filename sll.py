@@ -79,7 +79,10 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        pass
+
+        current_node = SLNode(value)
+        current_node.next = self.head.next
+        self.head.next = current_node
 
     def add_back(self, value: object) -> None:
         """
