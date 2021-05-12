@@ -102,8 +102,6 @@ class CircularList:
 
     # ------------------------------------------------------------------ #
 
-
-
     def add_front(self, value: object) -> None:
         """
         TODO: Write this implementation
@@ -121,6 +119,7 @@ class CircularList:
         # Previous node of its next node
         new_node.next.prev = new_node
         return
+
     def add_back(self, value: object) -> None:
         """
         TODO: Write this implementation
@@ -148,7 +147,6 @@ class CircularList:
 
         counter = 0
         current_node = self.sentinel
-
 
         while counter <= index:
             current_node = current_node.next
@@ -204,23 +202,13 @@ class CircularList:
             current_node.next.prev = current_node.prev
             return
 
-        if index >= self.length() // 2:
-            while counter != index:
-                current_node = current_node.prev
-                counter += 1
-                if counter == index:
-                    current_node.prev.next = current_node.next
-                    current_node.next.prev = current_node.prev
-                    return
-
-        else:
-            while counter != index:
-                current_node = current_node.next
-                counter += 1
-                if counter == index:
-                    current_node.prev.next = current_node.next
-                    current_node.next.prev = current_node.prev
-                    return
+        while counter <= index:
+            current_node = current_node.next
+            counter += 1
+            if counter == index:
+                current_node.prev.next = current_node.next
+                current_node.next.prev = current_node.prev
+                return
 
     def get_front(self) -> object:
         """
@@ -287,6 +275,7 @@ class CircularList:
         TODO: Write this implementation
         """
         pass
+
 
 if __name__ == '__main__':
     pass
@@ -513,7 +502,7 @@ if __name__ == '__main__':
     #   ([], 25),
     #   ([2, 0, 9, 0, 7], 108),
     #    ([9, 9, 9], 9_999_999),
-    #)
+    # )
     # for list_content, integer in test_cases:
     #    lst = CircularList(list_content)
     # print('INPUT :', lst, 'INTEGER', integer)
