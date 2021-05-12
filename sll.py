@@ -237,7 +237,7 @@ class LinkedList:
             return True
 
         # If the node reaches the tail without finding the value
-        if current_node.next is self.tail:
+        if current_node.next is None:
             return False
 
         # If the node finds the value after the start of the list
@@ -252,7 +252,11 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        pass
+    #     return self.rec_count(value, self.head)
+    #
+    # def rec_count(self, value: object, current_node):
+    #
+
 
     def slice(self, start_index: int, size: int) -> object:
         """
