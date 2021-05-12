@@ -232,7 +232,38 @@ class CircularList:
         """
         TODO: Write this implementation
         """
-        pass
+
+        current_node = self.sentinel.next
+        found = False
+
+        while current_node and not found:
+            if current_node.value == value and current_node is self.sentinel.next:
+                self.remove_front()
+                return True
+            elif current_node.value == value:
+                previous_node = current_node.prev
+                next_node = current_node.next
+                previous_node.next = next_node
+                next_node.prev = previous_node
+                return True
+            elif current_node.next.value is None:
+                return False
+            else:
+                current_node = current_node.next
+        #
+        # if current_node.value == value:
+        #     current_node.prev.next = current_node.next
+        #     current_node.next.prev = current_node.prev
+        #
+        # while current_node.value != value:
+        #     if current_node.next.value is None:
+        #         return False
+        #     if current_node.next.value == value:
+        #         current_node.prev.next = current_node.next
+        #         current_node.next.prev = current_node.prev
+        #         return True
+        #     else:
+        #         current_node = current_node.next
 
     def count(self, value: object) -> int:
         """
@@ -363,19 +394,19 @@ if __name__ == '__main__':
     # except Exception as e:
     #     print(type(e))
     #
-    print('\n# get_back example 1')
-    lst = CircularList([1, 2, 3])
-    lst.add_back(4)
-    print(lst.get_back())
-    lst.remove_back()
-    print(lst)
-    print(lst.get_back())
-    #
-    # print('\n# remove example 1')
-    # lst = CircularList([1, 2, 3, 1, 2, 3, 1, 2, 3])
+    # print('\n# get_back example 1')
+    # lst = CircularList([1, 2, 3])
+    # lst.add_back(4)
+    # print(lst.get_back())
+    # lst.remove_back()
     # print(lst)
-    # for value in [7, 3, 3, 3, 3]:
-    #     print(lst.remove(value), lst.length(), lst)
+    # print(lst.get_back())
+    #
+    print('\n# remove example 1')
+    lst = CircularList([1, 2, 3, 1, 2, 3, 1, 2, 3])
+    print(lst)
+    for value in [7, 3, 3, 3, 3]:
+        print(lst.remove(value), lst.length(), lst)
     #
     # print('\n# count example 1')
     # lst = CircularList([1, 2, 3, 1, 2, 2])
