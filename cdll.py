@@ -171,7 +171,10 @@ class CircularList:
             raise CDLLException()
 
         else:
-            self.sentinel.next = self.sentinel.next.next
+            node = self.sentinel.next
+
+            node.prev.next = node.next
+            node.next.prev = node.prev
 
     def remove_back(self) -> None:
         """
