@@ -167,7 +167,11 @@ class CircularList:
         """
         TODO: Write this implementation
         """
-        pass
+        if self.is_empty():
+            raise CDLLException()
+
+        else:
+            self.sentinel.next = self.sentinel.next.next
 
     def remove_back(self) -> None:
         """
@@ -266,26 +270,26 @@ if __name__ == '__main__':
     # lst.add_back('A')
     # print(lst)
     #
-    print('\n# insert_at_index example 1')
-    lst = CircularList()
-    test_cases = [(0, 'A'), (0, 'B'), (1, 'C'), (3, 'D'), (-1, 'E'), (5, 'F')]
-    for index, value in test_cases:
-        print('Insert of', value, 'at', index, ': ', end='')
-        try:
-            lst.insert_at_index(index, value)
-            print(lst)
-        except Exception as e:
-            print(type(e))
-    #
-    # print('\n# remove_front example 1')
-    # lst = CircularList([1, 2])
-    # print(lst)
-    # for i in range(3):
+    # print('\n# insert_at_index example 1')
+    # lst = CircularList()
+    # test_cases = [(0, 'A'), (0, 'B'), (1, 'C'), (3, 'D'), (-1, 'E'), (5, 'F')]
+    # for index, value in test_cases:
+    #     print('Insert of', value, 'at', index, ': ', end='')
     #     try:
-    #         lst.remove_front()
-    #         print('Successful removal', lst)
+    #         lst.insert_at_index(index, value)
+    #         print(lst)
     #     except Exception as e:
     #         print(type(e))
+    #
+    print('\n# remove_front example 1')
+    lst = CircularList([1, 2])
+    print(lst)
+    for i in range(3):
+        try:
+            lst.remove_front()
+            print('Successful removal', lst)
+        except Exception as e:
+            print(type(e))
     #
     # print('\n# remove_back example 1')
     # lst = CircularList()
