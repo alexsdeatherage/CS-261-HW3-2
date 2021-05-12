@@ -214,7 +214,10 @@ class CircularList:
         """
         TODO: Write this implementation
         """
-        pass
+        if self.is_empty():
+            raise CDLLException()
+        else:
+            return self.sentinel.next.value
 
     def get_back(self) -> object:
         """
@@ -333,29 +336,29 @@ if __name__ == '__main__':
     # lst.remove_back()
     # print(lst)
     #
-    print('\n# remove_at_index example 1')
-    lst = CircularList([1, 2, 3, 4, 5, 6])
-    print(lst)
-    for index in [0, 0, 0, 2, 2, -2]:
-        print('Removed at index:', index, ': ', end='')
-        try:
-            lst.remove_at_index(index)
-            print(lst)
-        except Exception as e:
-            print(type(e))
-    print(lst)
+    # print('\n# remove_at_index example 1')
+    # lst = CircularList([1, 2, 3, 4, 5, 6])
+    # print(lst)
+    # for index in [0, 0, 0, 2, 2, -2]:
+    #     print('Removed at index:', index, ': ', end='')
+    #     try:
+    #         lst.remove_at_index(index)
+    #         print(lst)
+    #     except Exception as e:
+    #         print(type(e))
+    # print(lst)
     #
-    # print('\n# get_front example 1')
-    # lst = CircularList(['A', 'B'])
-    # print(lst.get_front())
-    # print(lst.get_front())
-    # lst.remove_front()
-    # print(lst.get_front())
-    # lst.remove_back()
-    # try:
-    #     print(lst.get_front())
-    # except Exception as e:
-    #     print(type(e))
+    print('\n# get_front example 1')
+    lst = CircularList(['A', 'B'])
+    print(lst.get_front())
+    print(lst.get_front())
+    lst.remove_front()
+    print(lst.get_front())
+    lst.remove_back()
+    try:
+        print(lst.get_front())
+    except Exception as e:
+        print(type(e))
     #
     # print('\n# get_back example 1')
     # lst = CircularList([1, 2, 3])
