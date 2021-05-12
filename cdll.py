@@ -125,9 +125,15 @@ class CircularList:
         """
         TODO: Write this implementation
         """
-
-
+        last_node = self.sentinel.prev
         new_node = DLNode(value)
+
+        new_node.prev = last_node
+        new_node.next = last_node.next
+
+        last_node.next = new_node
+
+        new_node.next.prev = new_node
 
     def insert_at_index(self, index: int, value: object) -> None:
         """
@@ -222,21 +228,21 @@ class CircularList:
 if __name__ == '__main__':
     pass
 
-    print('\n# add_front example 1')
-    lst = CircularList()
-    print(lst)
-    lst.add_front('A')
-    lst.add_front('B')
-    lst.add_front('C')
-    print(lst)
-
-    # print('\n# add_back example 1')
+    # print('\n# add_front example 1')
     # lst = CircularList()
     # print(lst)
-    # lst.add_back('C')
-    # lst.add_back('B')
-    # lst.add_back('A')
+    # lst.add_front('A')
+    # lst.add_front('B')
+    # lst.add_front('C')
     # print(lst)
+
+    print('\n# add_back example 1')
+    lst = CircularList()
+    print(lst)
+    lst.add_back('C')
+    lst.add_back('B')
+    lst.add_back('A')
+    print(lst)
     #
     # print('\n# insert_at_index example 1')
     # lst = CircularList()
