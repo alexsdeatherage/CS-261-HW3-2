@@ -252,11 +252,20 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-    #     return self.rec_count(value, self.head)
-    #
-    # def rec_count(self, value: object, current_node):
-    #
+        return self.rec_count(value, self.head.next, counter=0)
 
+    def rec_count(self, value: object, current_node, counter):
+        """...
+
+        """
+        if current_node is self.tail:
+            return counter
+
+        if current_node.value == value:
+            return self.rec_count(value, current_node.next, counter + 1)
+
+        else:
+            return self.rec_count(value, current_node.next, counter)
 
     def slice(self, start_index: int, size: int) -> object:
         """
@@ -364,16 +373,16 @@ if __name__ == '__main__':
     # print(list.get_back())
     #
     #
-    print('\n# remove example 1')
-    list = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
-    print(list)
-    for value in [7, 3, 3, 3, 3]:
-        print(list.remove(value), list.length(), list)
+    # print('\n# remove example 1')
+    # list = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
+    # print(list)
+    # for value in [7, 3, 3, 3, 3]:
+    #     print(list.remove(value), list.length(), list)
     #
     #
-    # print('\n# count example 1')
-    # list = LinkedList([1, 2, 3, 1, 2, 2])
-    # print(list, list.count(1), list.count(2), list.count(3), list.count(4))
+    print('\n# count example 1')
+    list = LinkedList([1, 2, 3, 1, 2, 2])
+    print(list, list.count(1), list.count(2), list.count(3), list.count(4))
     #
     #
     # print('\n# slice example 1')
