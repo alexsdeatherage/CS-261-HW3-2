@@ -102,12 +102,25 @@ class CircularList:
 
     # ------------------------------------------------------------------ #
 
+
+
     def add_front(self, value: object) -> None:
         """
         TODO: Write this implementation
         """
-        pass
+        # Creates the new node
+        new_node = DLNode(value)
 
+        # Links the new node to its previous and next links
+        new_node.prev = self.sentinel
+        new_node.next = self.sentinel.next
+
+        # New node follows the Front Sentinel
+        self.sentinel.next = new_node
+
+        # Previous node of its next node
+        new_node.next.prev = new_node
+        return
     def add_back(self, value: object) -> None:
         """
         TODO: Write this implementation
@@ -207,14 +220,14 @@ class CircularList:
 if __name__ == '__main__':
     pass
 
-    # print('\n# add_front example 1')
-    # lst = CircularList()
-    # print(lst)
-    # lst.add_front('A')
-    # lst.add_front('B')
-    # lst.add_front('C')
-    # print(lst)
-    #
+    print('\n# add_front example 1')
+    lst = CircularList()
+    print(lst)
+    lst.add_front('A')
+    lst.add_front('B')
+    lst.add_front('C')
+    print(lst)
+
     # print('\n# add_back example 1')
     # lst = CircularList()
     # print(lst)

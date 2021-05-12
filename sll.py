@@ -179,15 +179,8 @@ class LinkedList:
             self.remove_front()
             return
 
-        # if current_node.next.next is self.tail:
-        #     current_node.next.next = None
-        #     current_node.next = self.tail
-        #     return
-
         if index == counter:
-            # new_node = SLNode(value)
-            # new_node.next = current_node.next
-            # current_node.next = new_node
+
             prev_node = current_node
             current_node = current_node.next
             next_node = current_node.next
@@ -271,7 +264,10 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        pass
+        return self.rec_count(start_index, size, )
+
+    def rec_slice(self, start_index: int, size: int, ):
+
 
 
 
@@ -380,17 +376,17 @@ if __name__ == '__main__':
     #     print(list.remove(value), list.length(), list)
     #
     #
-    print('\n# count example 1')
-    list = LinkedList([1, 2, 3, 1, 2, 2])
-    print(list, list.count(1), list.count(2), list.count(3), list.count(4))
+    # print('\n# count example 1')
+    # list = LinkedList([1, 2, 3, 1, 2, 2])
+    # print(list, list.count(1), list.count(2), list.count(3), list.count(4))
     #
     #
-    # print('\n# slice example 1')
-    # list = LinkedList([1, 2, 3, 4, 5, 6, 7, 8, 9])
-    # ll_slice = list.slice(1, 3)
-    # print(list, ll_slice, sep="\n")
-    # ll_slice.remove_at_index(0)
-    # print(list, ll_slice, sep="\n")
+    print('\n# slice example 1')
+    list = LinkedList([1, 2, 3, 4, 5, 6, 7, 8, 9])
+    ll_slice = list.slice(1, 3)
+    print(list, ll_slice, sep="\n")
+    ll_slice.remove_at_index(0)
+    print(list, ll_slice, sep="\n")
     #
     #
     # print('\n# slice example 2')
