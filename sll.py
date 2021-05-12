@@ -226,7 +226,27 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        pass
+        return self.rec_remove(value, self.head.next)
+
+    def rec_remove(self, value, current_node=SLNode):
+
+        # If the node is at the start of the list
+        if current_node.value == value:
+            current_node.value = current_node.next.value
+            current_node.next = current_node.next.next
+            return True
+
+        # If the node reaches the tail without finding the value
+        if current_node.next is self.tail:
+            return False
+
+        # If the node finds the value after the start of the list
+        if current_node.next.value == value:
+            current_node.next = current_node.next.next
+            return True
+
+        return self.rec_remove(value, current_node.next)
+
 
     def count(self, value: object) -> int:
         """
@@ -340,11 +360,11 @@ if __name__ == '__main__':
     # print(list.get_back())
     #
     #
-    # print('\n# remove example 1')
-    # list = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
-    # print(list)
-    # for value in [7, 3, 3, 3, 3]:
-    #     print(list.remove(value), list.length(), list)
+    print('\n# remove example 1')
+    list = LinkedList([1, 2, 3, 1, 2, 3, 1, 2, 3])
+    print(list)
+    for value in [7, 3, 3, 3, 3]:
+        print(list.remove(value), list.length(), list)
     #
     #
     # print('\n# count example 1')
