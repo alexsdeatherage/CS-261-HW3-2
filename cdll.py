@@ -125,7 +125,9 @@ class CircularList:
         """
         TODO: Write this implementation
         """
-        pass
+
+
+        new_node = DLNode(value)
 
     def insert_at_index(self, index: int, value: object) -> None:
         """

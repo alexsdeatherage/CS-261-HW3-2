@@ -264,9 +264,9 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        return self.rec_count(start_index, size, )
+        # return self.rec_count(start_index, size, )
 
-    def rec_slice(self, start_index: int, size: int, ):
+    # def rec_slice(self, start_index: int, size: int, ):
 
 
 
