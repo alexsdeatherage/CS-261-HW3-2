@@ -139,7 +139,29 @@ class CircularList:
         """
         TODO: Write this implementation
         """
-        pass
+        if index < 0 or index > self.length():
+            raise CDLLException()
+
+        if index == 0:
+            self.add_front(value)
+            return
+
+        counter = 0
+        current_node = self.sentinel
+
+
+        while counter <= index:
+            current_node = current_node.next
+            counter += 1
+
+        previous_node = current_node.prev
+        new_node = DLNode(value)
+        new_node.prev = previous_node
+        new_node.next = current_node
+
+        current_node.prev = new_node
+        previous_node.next = new_node
+        return
 
     def remove_front(self) -> None:
         """
@@ -236,24 +258,24 @@ if __name__ == '__main__':
     # lst.add_front('C')
     # print(lst)
 
-    print('\n# add_back example 1')
-    lst = CircularList()
-    print(lst)
-    lst.add_back('C')
-    lst.add_back('B')
-    lst.add_back('A')
-    print(lst)
-    #
-    # print('\n# insert_at_index example 1')
+    # print('\n# add_back example 1')
     # lst = CircularList()
-    # test_cases = [(0, 'A'), (0, 'B'), (1, 'C'), (3, 'D'), (-1, 'E'), (5, 'F')]
-    # for index, value in test_cases:
-    #     print('Insert of', value, 'at', index, ': ', end='')
-    #     try:
-    #         lst.insert_at_index(index, value)
-    #         print(lst)
-    #     except Exception as e:
-    #         print(type(e))
+    # print(lst)
+    # lst.add_back('C')
+    # lst.add_back('B')
+    # lst.add_back('A')
+    # print(lst)
+    #
+    print('\n# insert_at_index example 1')
+    lst = CircularList()
+    test_cases = [(0, 'A'), (0, 'B'), (1, 'C'), (3, 'D'), (-1, 'E'), (5, 'F')]
+    for index, value in test_cases:
+        print('Insert of', value, 'at', index, ': ', end='')
+        try:
+            lst.insert_at_index(index, value)
+            print(lst)
+        except Exception as e:
+            print(type(e))
     #
     # print('\n# remove_front example 1')
     # lst = CircularList([1, 2])
