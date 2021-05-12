@@ -223,7 +223,10 @@ class CircularList:
         """
         TODO: Write this implementation
         """
-        pass
+        if self.is_empty():
+            raise CDLLException()
+        else:
+            return self.sentinel.prev.value
 
     def remove(self, value: object) -> bool:
         """
@@ -348,25 +351,25 @@ if __name__ == '__main__':
     #         print(type(e))
     # print(lst)
     #
-    print('\n# get_front example 1')
-    lst = CircularList(['A', 'B'])
-    print(lst.get_front())
-    print(lst.get_front())
-    lst.remove_front()
-    print(lst.get_front())
-    lst.remove_back()
-    try:
-        print(lst.get_front())
-    except Exception as e:
-        print(type(e))
-    #
-    # print('\n# get_back example 1')
-    # lst = CircularList([1, 2, 3])
-    # lst.add_back(4)
-    # print(lst.get_back())
+    # print('\n# get_front example 1')
+    # lst = CircularList(['A', 'B'])
+    # print(lst.get_front())
+    # print(lst.get_front())
+    # lst.remove_front()
+    # print(lst.get_front())
     # lst.remove_back()
-    # print(lst)
-    # print(lst.get_back())
+    # try:
+    #     print(lst.get_front())
+    # except Exception as e:
+    #     print(type(e))
+    #
+    print('\n# get_back example 1')
+    lst = CircularList([1, 2, 3])
+    lst.add_back(4)
+    print(lst.get_back())
+    lst.remove_back()
+    print(lst)
+    print(lst.get_back())
     #
     # print('\n# remove example 1')
     # lst = CircularList([1, 2, 3, 1, 2, 3, 1, 2, 3])
