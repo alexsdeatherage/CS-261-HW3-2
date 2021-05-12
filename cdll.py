@@ -271,12 +271,106 @@ class CircularList:
         TODO: Write this implementation
         """
         pass
+        # if index1 == index2:
+        #     return
+        #
+        # length = self.length()
+        #
+        # first_index = min(index1, index2)
+        # last_index = max(index1, index2)
+        # left_index = 0
+        # right_index = length - 1
+        #
+        # if first_index < 0 or first_index > length - 1:
+        #     raise CDLLException()
+        #
+        # if last_index < 0 or last_index > length - 1:
+        #     raise CDLLException()
+        #
+        # left_node = self.sentinel.next
+        # right_node = self.sentinel.prev
+        #
+        # while left_index != first_index or right_index != last_index:
+        #     if left_index != first_index:
+        #         left_node = left_node.next
+        #         left_index += 1
+        #
+        #     if right_index != last_index:
+        #         right_node = right_node.prev
+        #         right_index -= 1
+        #
+        #
+        # left_of_left_node = left_node.prev
+        # right_of_left_node = left_node.next
+        #
+        # left_of_right_node = right_node.prev
+        # right_of_right_node = right_node.next
+        #
+        #
+        # left_of_left_node.next = left_node.next
+        # right_of_left_node.prev = left_node.prev
+        # left_node.next = left_node.prev
+        #
+        # left_of_right_node.next = right_node.next
+        # right_of_right_node.prev = right_node.prev
+        # right_node.next = right_node.prev
+        #
+        #
+        # left_node.prev = right_node.prev
+        # right_node.prev = left_node.next
+        #
+        # left_node.next = left_node.prev
+        # right_node.next = right_node.prev
+        #
+        # left_node.next = left_node.next.next
+        # left_node.next.prev = left_node
+        # left_node.prev.next = left_node
+        #
+        # right_node.next = right_node.next.next
+        # right_node.next.prev = right_node
+        # right_node.prev.next = right_node
+
+
+
+        # # Assigns the pointers of the left node
+        # left_node.prev = left_of_left_node
+        # left_node.next = right_of_left_node
+        #
+        # right_of_left_node.prev = left_node
+        # left_of_left_node.next = left_node
+        #
+        # # Assigns the pointers of the right node
+        # right_node.prev = left_of_right_node
+        # right_node.next = right_of_right_node
+        #
+        # left_of_right_node.prev = right_node
+        # right_of_right_node.next = right_node
+
 
     def reverse(self) -> None:
         """
         TODO: Write this implementation
         """
-        pass
+        last_node = self.sentinel.prev
+
+        current_node = last_node
+        length = self.length() - 1
+        counter = 0
+
+        while counter < length:
+            counter += 1
+            previous_node = current_node.prev
+            self.add_back(current_node.value)
+            current_node = previous_node
+
+        self.add_back(current_node.value)
+
+        while counter >= 0:
+            counter -= 1
+            self.remove_front()
+
+
+
 
     def sort(self) -> None:
         """
@@ -403,9 +497,9 @@ if __name__ == '__main__':
     # for value in [7, 3, 3, 3, 3]:
     #     print(lst.remove(value), lst.length(), lst)
     #
-    print('\n# count example 1')
-    lst = CircularList([1, 2, 3, 1, 2, 2])
-    print(lst, lst.count(1), lst.count(2), lst.count(3), lst.count(4))
+    # print('\n# count example 1')
+    # lst = CircularList([1, 2, 3, 1, 2, 2])
+    # print(lst, lst.count(1), lst.count(2), lst.count(3), lst.count(4))
     #
     # print('\n# swap_pairs example 1')
     # lst = CircularList([0, 1, 2, 3, 4, 5, 6])
@@ -420,16 +514,16 @@ if __name__ == '__main__':
     #     except Exception as e:
     #         print(type(e))
     #
-    # print('\n# reverse example 1')
-    # test_cases = (
-    #     [1, 2, 3, 3, 4, 5],
-    #     [1, 2, 3, 4, 5],
-    #     ['A', 'B', 'C', 'D']
-    # )
-    # for case in test_cases:
-    #     lst = CircularList(case)
-    #     lst.reverse()
-    #     print(lst)
+    print('\n# reverse example 1')
+    test_cases = (
+        [1, 2, 3, 3, 4, 5],
+        [1, 2, 3, 4, 5],
+        ['A', 'B', 'C', 'D']
+    )
+    for case in test_cases:
+        lst = CircularList(case)
+        lst.reverse()
+        print(lst)
     #
     # print('\n# reverse example 2')
     # lst = CircularList()
