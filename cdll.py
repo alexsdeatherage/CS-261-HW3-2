@@ -351,23 +351,24 @@ class CircularList:
         """
         TODO: Write this implementation
         """
-        last_node = self.sentinel.prev
+        pass
 
-        current_node = last_node
-        length = self.length() - 1
-        counter = 0
+        # last_node = self.sentinel.prev
+        #
+        # current_node = last_node
+        # length = self.length() - 1
+        # counter = 0
+        #
+        # while counter < length:
+        #     counter += 1
+        #     previous_node = current_node.prev
+        #
+        #     # self.add_back(current_node.value)
+        #     current_node = previous_node
+        #
+        # self.add_back(current_node.value)
 
-        while counter < length:
-            counter += 1
-            previous_node = current_node.prev
-            self.add_back(current_node.value)
-            current_node = previous_node
 
-        self.add_back(current_node.value)
-
-        while counter >= 0:
-            counter -= 1
-            self.remove_front()
 
 
 
@@ -382,19 +383,107 @@ class CircularList:
         """
         TODO: Write this implementation
         """
-        pass
+
+        length = self.length()
+        if steps == 0 or self.is_empty():
+            return
+
+        positive_dir = True
+        if steps < 0:
+            positive_dir = False
+
+        new_steps = steps % length
+
+        current_node = self.sentinel
+
+        if positive_dir:
+            for i in range(new_steps):
+                current_node = current_node.prev
+        else:
+            for i in range(new_steps):
+                current_node = current_node.prev
+
+        tracker = current_node
+
+        if tracker is self.sentinel:
+            return
+
+        self.sentinel.next.prev = self.sentinel.prev
+        self.sentinel.prev.next = self.sentinel.next
+
+        prev_tracker = current_node.prev
+        prev_tracker.next = self.sentinel
+        self.sentinel.prev = prev_tracker
+
+        self.sentinel.next = tracker
+        tracker.prev = self.sentinel
+
+
+
 
     def remove_duplicates(self) -> None:
         """
         TODO: Write this implementation
         """
-        pass
+
+        if self.is_empty():
+            return
+
+        duplicate = None
+        length = self.length()
+        lead_pointer = self.sentinel.next
+        trail_pointer = self.sentinel
+
+        for _ in range(length):
+            lead_value = lead_pointer.value
+            lead_pointer = lead_pointer.next
+
+            if lead_value == lead_pointer.value:
+                duplicate = True
+
+            else:
+                # pass through duplicates
+                if duplicate is not True:
+                    trail_pointer = trail_pointer.next
+                else:
+                    trail_pointer.next = lead_pointer
+                    lead_pointer.prev = trail_pointer
+                    duplicate = False
 
     def odd_even(self) -> None:
         """
         TODO: Write this implementation
         """
-        pass
+        if self.is_empty():
+            return
+
+        if self.sentinel.next.next is self.sentinel:
+            return
+
+        # Index starts at 1
+        trail = self.sentinel.next
+        lead = self.sentinel.next.next
+        index = 1
+
+        while lead.next is not self.sentinel:
+            index += 1
+            if index % 2 == 0:
+                lead = lead.next
+            else:
+                print(1)
+        # change pointers against to two nodes swapping
+        # change nodes that are going to be swapped
+        # swap1 = lead.next # 3
+        # trail.next.prev = swap1
+        # swap1.next = trail.next
+        # swap1.prev = trail
+        # trail.next = swap1
+        #
+        # swap1.prev.next = swap1.next
+        # swap1.next.prev = swap1.prev
+        #
+        # trail = trail.next
+        # print(swap1.value)
 
     def add_integer(self, num: int) -> None:
         """
@@ -514,16 +603,16 @@ if __name__ == '__main__':
     #     except Exception as e:
     #         print(type(e))
     #
-    print('\n# reverse example 1')
-    test_cases = (
-        [1, 2, 3, 3, 4, 5],
-        [1, 2, 3, 4, 5],
-        ['A', 'B', 'C', 'D']
-    )
-    for case in test_cases:
-        lst = CircularList(case)
-        lst.reverse()
-        print(lst)
+    # print('\n# reverse example 1')
+    # test_cases = (
+    #     [1, 2, 3, 3, 4, 5],
+    #     [1, 2, 3, 4, 5],
+    #     ['A', 'B', 'C', 'D']
+    # )
+    # for case in test_cases:
+    #     lst = CircularList(case)
+    #     lst.reverse()
+    #     print(lst)
     #
     # print('\n# reverse example 2')
     # lst = CircularList()
@@ -574,12 +663,12 @@ if __name__ == '__main__':
     #     lst.sort()
     #     print(lst)
     #
-    # print('\n# rotate example 1')
-    # source = [_ for _ in range(-20, 20, 7)]
-    # for steps in [1, 2, 0, -1, -2, 28, -100]:
-    #     lst = CircularList(source)
-    #     lst.rotate(steps)
-    #     print(lst, steps)
+    print('\n# rotate example 1')
+    source = [_ for _ in range(-20, 20, 7)]
+    for steps in [1, 2, 0, -1, -2, 28, -100]:
+        lst = CircularList(source)
+        lst.rotate(steps)
+        print(lst, steps)
     #
     # print('\n# rotate example 2')
     # lst = CircularList([10, 20, 30, 40])
