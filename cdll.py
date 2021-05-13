@@ -271,9 +271,6 @@ class CircularList:
         TODO: Write this implementation
         """
 
-        if index1 == index2:
-            return
-
         length = self.length()
 
         first_index = min(index1, index2)
@@ -286,6 +283,9 @@ class CircularList:
 
         if last_index < 0 or last_index > length - 1:
             raise CDLLException()
+
+        if index1 == index2:
+            return
 
         left_node = self.sentinel.next
         right_node = self.sentinel.prev
@@ -368,20 +368,20 @@ class CircularList:
         TODO: Write this implementation
         """
 
-        # last_node = self.sentinel.prev
-        #
-        # current_node = last_node
-        # length = self.length() - 1
-        # counter = 0
-        #
-        # while counter < length:
-        #     counter += 1
-        #     previous_node = current_node.prev
-        #
-        #     # self.add_back(current_node.value)
-        #     current_node = previous_node
-        #
-        # self.add_back(current_node.value)
+        last_node = self.sentinel.prev
+
+        current_node = last_node
+        length = self.length() - 1
+        counter = 0
+
+        while counter < length:
+            counter += 1
+            previous_node = current_node.prev
+
+            # self.add_back(current_node.value)
+            current_node = previous_node
+
+        self.add_back(current_node.value)
 
     def sort(self) -> None:
         """
