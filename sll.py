@@ -273,7 +273,7 @@ class LinkedList:
             return new_LL
 
         # find where slice stops and is in bounds.
-        if start_index < 0:
+        if start_index < 0 or start_index > self.length():
             raise SLLException()
 
         if size > self.length():
