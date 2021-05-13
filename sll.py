@@ -77,7 +77,7 @@ class LinkedList:
 
     def add_front(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Adds a new node at the beginning of the list (right after the front sentinel
         """
 
         current_node = SLNode(value)
@@ -86,7 +86,7 @@ class LinkedList:
 
     def add_back(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Adds a new node at the end of the list (right before the back sentinel).
         """
         # traverse the list to find last node
         self.rec_add_back(value, self.head.next)
@@ -110,12 +110,16 @@ class LinkedList:
 
     def insert_at_index(self, index: int, value: object) -> None:
         """
-        TODO: Write this implementation
+        Adds a new value at the specified index position in the linked list. Index 0
+        refers to the beginning of the list (right after the front sentinel).
+        If the provided index is invalid, the method raises a custom “SLLException”
         """
         self.rec_insert_at_index(index, value, self.head, 0)
 
     def rec_insert_at_index(self, index: int, value: object, current_node: SLNode, counter: int):
-
+        """
+        Helper Function for insert_at_index
+        """
         if index < 0 or index > self.length():
             raise SLLException()
 
@@ -133,7 +137,8 @@ class LinkedList:
 
     def remove_front(self) -> None:
         """
-        TODO: Write this implementation
+        Removes the first node from the list. If the list is empty, the method raises a
+        custom “SLLException”.
         """
         if self.is_empty():
             raise SLLException()
@@ -143,13 +148,14 @@ class LinkedList:
 
     def remove_back(self) -> None:
         """
-        TODO: Write this implementation
+        Removes the last node from the list. If the list is empty, the method raises a
+        custom “SLLException”
         """
         self.rec_remove_back(self.head)
 
     def rec_remove_back(self, current_node):
-        """...
-
+        """
+        Helper function for remove_back
         """
         if self.is_empty():
             raise SLLException()
@@ -163,14 +169,16 @@ class LinkedList:
 
     def remove_at_index(self, index: int) -> None:
         """
-        TODO: Write this implementation
+        Removes a node from the list given its index. Index 0 refers to the beginning of
+        the list (right after the front sentinel.
+        If the provided index is invalid, the method raises a custom “SLLException”
         """
 
         self.rec_remove_at_index(index, self.head, counter=0)
 
     def rec_remove_at_index(self, index: int, current_node: SLNode, counter: int):
-        """...
-
+        """
+        Helper function for remove_at_index
         """
         if index < 0 or index > self.length() - 1:
             raise SLLException()
@@ -192,7 +200,8 @@ class LinkedList:
 
     def get_front(self) -> object:
         """
-        TODO: Write this implementation
+        Returns the value from the first node in the list without removing it. If the list is
+        empty, the method raises a custom “SLLException”
         """
         if self.is_empty():
             raise SLLException()
@@ -201,11 +210,15 @@ class LinkedList:
 
     def get_back(self) -> object:
         """
-        TODO: Write this implementation
+        Returns the value from the last node in the list without removing it. If the list is
+        empty, the method raises a custom “SLLException”.
         """
         return self.rec_get_back(self.head)
 
     def rec_get_back(self, current_node):
+        """
+        Helper function for get_back
+        """
         if self.is_empty():
             raise SLLException()
 
@@ -217,11 +230,16 @@ class LinkedList:
 
     def remove(self, value: object) -> bool:
         """
-        TODO: Write this implementation
+        Traverses the list from the beginning to the end and removes the first node in
+        the list that matches the provided “value” object. The method returns True if some node
+        was actually removed from the list. Otherwise, it returns False
         """
         return self.rec_remove(value, self.head.next)
 
     def rec_remove(self, value, current_node=SLNode):
+        """
+        Helper function for remove
+        """
 
         # If the node is at the start of the list
         if current_node.value == value:
@@ -243,13 +261,14 @@ class LinkedList:
 
     def count(self, value: object) -> int:
         """
-        TODO: Write this implementation
+        Counts the number of elements in the list that match the provided “value”
+        object.
         """
         return self.rec_count(value, self.head.next, counter=0)
 
     def rec_count(self, value: object, current_node, counter):
-        """...
-
+        """
+        Helper function for count
         """
         if current_node is self.tail:
             return counter
@@ -262,7 +281,8 @@ class LinkedList:
 
     def slice(self, start_index: int, size: int) -> object:
         """
-        TODO: Write this implementation
+        Returns a new LinkedList object that contains the requested number of nodes
+        from the original list starting with the node located at the requested start index.
         """
         new_LL = LinkedList(None)
         return self.rec_slice(start_index, size, self.head.next, new_LL, counter=0)

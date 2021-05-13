@@ -1,7 +1,7 @@
 # Course: CS261 - Data Structures
-# Student Name:
-# Assignment:
-# Description:
+# Student Name: Alex Deatherage
+# Assignment: HW3
+# Description: Singly Linked List
 
 
 class CDLLException(Exception):
@@ -104,7 +104,7 @@ class CircularList:
 
     def add_front(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Adds a new node at the beginning of the list (right after the front sentinel
         """
         # Creates the new node
         new_node = DLNode(value)
@@ -122,7 +122,7 @@ class CircularList:
 
     def add_back(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Adds a new node at the end of the list (right before the back sentinel).
         """
         last_node = self.sentinel.prev
         new_node = DLNode(value)
@@ -136,7 +136,9 @@ class CircularList:
 
     def insert_at_index(self, index: int, value: object) -> None:
         """
-        TODO: Write this implementation
+        Adds a new value at the specified index position in the linked list. Index 0
+        refers to the beginning of the list (right after the front sentinel).
+        If the provided index is invalid, the method raises a custom “SLLException”
         """
         if index < 0 or index > self.length():
             raise CDLLException()
@@ -163,7 +165,8 @@ class CircularList:
 
     def remove_front(self) -> None:
         """
-        TODO: Write this implementation
+        Removes the first node from the list. If the list is empty, the method raises a
+        custom “SLLException”.
         """
         if self.is_empty():
             raise CDLLException()
@@ -176,7 +179,8 @@ class CircularList:
 
     def remove_back(self) -> None:
         """
-        TODO: Write this implementation
+        Removes the last node from the list. If the list is empty, the method raises a
+        custom “SLLException”
         """
         if self.is_empty():
             raise CDLLException()
@@ -189,7 +193,9 @@ class CircularList:
 
     def remove_at_index(self, index: int) -> None:
         """
-        TODO: Write this implementation
+        Removes a node from the list given its index. Index 0 refers to the beginning of
+        the list (right after the front sentinel.
+        If the provided index is invalid, the method raises a custom “SLLException”
         """
         counter = 0
         current_node = self.sentinel.next
@@ -212,7 +218,8 @@ class CircularList:
 
     def get_front(self) -> object:
         """
-        TODO: Write this implementation
+        Returns the value from the first node in the list without removing it. If the list is
+        empty, the method raises a custom “SLLException”
         """
         if self.is_empty():
             raise CDLLException()
@@ -221,7 +228,8 @@ class CircularList:
 
     def get_back(self) -> object:
         """
-        TODO: Write this implementation
+        Returns the value from the last node in the list without removing it. If the list is
+        empty, the method raises a custom “SLLException”.
         """
         if self.is_empty():
             raise CDLLException()
@@ -230,7 +238,9 @@ class CircularList:
 
     def remove(self, value: object) -> bool:
         """
-        TODO: Write this implementation
+        Traverses the list from the beginning to the end and removes the first node in
+        the list that matches the provided “value” object. The method returns True if some node
+        was actually removed from the list. Otherwise, it returns False
         """
 
         current_node = self.sentinel.next
@@ -253,7 +263,8 @@ class CircularList:
 
     def count(self, value: object) -> int:
         """
-        TODO: Write this implementation
+        Counts the number of elements in the list that match the provided “value”
+        object.
         """
         counter = 0
         current_node = self.sentinel.next
@@ -268,7 +279,8 @@ class CircularList:
 
     def swap_pairs(self, index1: int, index2: int) -> None:
         """
-        TODO: Write this implementation
+        Swaps two nodes given their indices. All work must be done “in place” without
+        creating any new nodes. If either of the provided indices is invalid, the method raises a custom “CDLLException”
         """
 
         length = self.length()
@@ -360,7 +372,9 @@ class CircularList:
 
     def reverse(self) -> None:
         """
-        TODO: Write this implementation
+        Reverses the order of the nodes in the list. All work must be done “in place”
+        without creating any new nodes. You are not allowed to change the values of the nodes; the
+        solution must change node pointers.
         """
 
         current_node = self.sentinel.prev
@@ -387,14 +401,17 @@ class CircularList:
 
     def sort(self) -> None:
         """
-        TODO: Write this implementation
+        Sorts the content of the list in non-descending order. All work must be done “in
+        place” without creating any new nodes
         """
         if self.is_empty():
             return
 
     def rotate(self, steps: int) -> None:
         """
-        TODO: Write this implementation
+        ‘Rotates’ the linked list by shifting the position of its elements right or left steps
+        number of times. If steps is a positive integer, elements should be rotated right. Otherwise,
+        the elements should be rotated left
         """
 
         length = self.length()
@@ -433,7 +450,8 @@ class CircularList:
 
     def remove_duplicates(self) -> None:
         """
-        TODO: Write this implementation
+        Deletes all nodes that have duplicate values from a sorted linked list, leaving
+        only nodes with distinct values.
         """
 
         if self.is_empty():
@@ -462,7 +480,8 @@ class CircularList:
 
     def odd_even(self) -> None:
         """
-        TODO: Write this implementation
+        Regroups list nodes by first grouping all ODD nodes together followed by all
+        EVEN nodes.
         """
         pass
         # if self.is_empty():
