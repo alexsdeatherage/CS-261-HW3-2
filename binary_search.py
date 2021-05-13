@@ -75,6 +75,8 @@ def binary_search_rotated(arr: StaticArray, target: int) -> int:
 def find_pivot(arr, low, high):
     while low <= high:
         pivot = (high + low) // 2
+        if pivot == high:
+            return pivot
         if arr[pivot] > arr[pivot + 1]:
             return pivot + 1
         else:
@@ -147,10 +149,11 @@ if __name__ == "__main__":
 
     print('\n# problem 2 example 1')
     test_cases = (
-        ((6, 8, 12, 20, 0, 2, 5, 9), 0),
-        ((6, 8, 12, 20, 0, 2, 5, 9), -1),
-        ((1,), 1),
-        ((1,), 0),
+        # ((6, 8, 12, 20, 0, 2, 5, 9), 0),
+        # ((6, 8, 12, 20, 0, 2, 5, 9), -1),
+        # ((1,), 1),
+        # ((1,), 0),
+        ((-689518409, -304117705, 922976428), -1000000000),
     )
     result = []
     for src, target in test_cases:
