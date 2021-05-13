@@ -351,7 +351,6 @@ class CircularList:
         """
         TODO: Write this implementation
         """
-        pass
 
         # last_node = self.sentinel.prev
         #
@@ -372,7 +371,10 @@ class CircularList:
         """
         TODO: Write this implementation
         """
-        pass
+        if self.is_empty():
+            return
+
+
 
     def rotate(self, steps: int) -> None:
         """
@@ -412,9 +414,6 @@ class CircularList:
 
         self.sentinel.next = tracker
         tracker.prev = self.sentinel
-
-
-
 
     def remove_duplicates(self) -> None:
         """
@@ -599,16 +598,16 @@ if __name__ == '__main__':
     #     except Exception as e:
     #         print(type(e))
     #
-    # print('\n# reverse example 1')
-    # test_cases = (
-    #     [1, 2, 3, 3, 4, 5],
-    #     [1, 2, 3, 4, 5],
-    #     ['A', 'B', 'C', 'D']
-    # )
-    # for case in test_cases:
-    #     lst = CircularList(case)
-    #     lst.reverse()
-    #     print(lst)
+    print('\n# reverse example 1')
+    test_cases = (
+        [1, 2, 3, 3, 4, 5],
+        [1, 2, 3, 4, 5],
+        ['A', 'B', 'C', 'D']
+    )
+    for case in test_cases:
+        lst = CircularList(case)
+        lst.reverse()
+        print(lst)
     #
     # print('\n# reverse example 2')
     # lst = CircularList()
@@ -659,12 +658,12 @@ if __name__ == '__main__':
     #     lst.sort()
     #     print(lst)
     #
-    print('\n# rotate example 1')
-    source = [_ for _ in range(-20, 20, 7)]
-    for steps in [1, 2, 0, -1, -2, 28, -100]:
-        lst = CircularList(source)
-        lst.rotate(steps)
-        print(lst, steps)
+    # print('\n# rotate example 1')
+    # source = [_ for _ in range(-20, 20, 7)]
+    # for steps in [1, 2, 0, -1, -2, 28, -100]:
+    #     lst = CircularList(source)
+    #     lst.rotate(steps)
+    #     print(lst, steps)
     #
     # print('\n# rotate example 2')
     # lst = CircularList([10, 20, 30, 40])
