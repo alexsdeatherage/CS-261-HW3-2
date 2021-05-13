@@ -61,12 +61,12 @@ def binary_search_rotated(arr: StaticArray, target: int) -> int:
         else:
             return -1
     low, high = 0, length - 1
-    pivot = find_pivot(arr, low, high)
+    pivot_pt = find_pivot(arr, low, high)
 
     if target < arr[0]:
-        return search(arr, pivot, high)
+        return search(arr, pivot_pt, high, target)
     else:
-        return search(arr, 0, pivot)
+        return search(arr, 0, pivot_pt, target)
 
 
 def find_pivot(arr, low, high):
@@ -81,7 +81,7 @@ def find_pivot(arr, low, high):
                 low = pivot + 1
 
 
-def search(arr, low, high):
+def search(arr, low, high, target):
     while low <= high:
         mid = (low + high) // 2
 
@@ -140,20 +140,20 @@ if __name__ == "__main__":
     #     result &= arr[answer] == target if target in src else answer == -1
     # print(result, total_time < 0.5)
 
-    # print('\n# problem 2 example 1')
-    # test_cases = (
-    #     ((6, 8, 12, 20, 0, 2, 5), 0),
-    #     ((6, 8, 12, 20, 0, 2, 5), -1),
-    #     ((1,), 1),
-    #     ((1,), 0),
-    # )
-    # result = []
-    # for src, target in test_cases:
-    #     arr = StaticArray(len(src))
-    #     for i, value in enumerate(src):
-    #         arr[i] = value
-    #     result.append((binary_search_rotated(arr, target)))
-    # print(*result)
+    print('\n# problem 2 example 1')
+    test_cases = (
+        ((6, 8, 12, 20, 0, 2, 5), 0),
+        ((6, 8, 12, 20, 0, 2, 5), -1),
+        ((1,), 1),
+        ((1,), 0),
+    )
+    result = []
+    for src, target in test_cases:
+        arr = StaticArray(len(src))
+        for i, value in enumerate(src):
+            arr[i] = value
+        result.append((binary_search_rotated(arr, target)))
+    print(*result)
 
     print('\n# problem 2 example 2')
 
