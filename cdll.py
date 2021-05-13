@@ -407,6 +407,26 @@ class CircularList:
         if self.is_empty():
             return
 
+        current_node = self.sentinel.next
+        while current_node.next is not self.sentinel:
+
+            if current_node.value > current_node.next.value:
+                before_node = current_node.prev
+                after_node = current_node.next
+                if before_node is not None:
+                    before_node.next = after_node
+
+                current_node.next = after_node.next
+                current_node.prev = after_node
+                after_node.next = current_node
+                after_node.prev = before_node
+
+                current_node.next.prev = current_node
+                current_node = self.sentinel.next
+
+            else:
+                current_node = current_node.next
+
     def rotate(self, steps: int) -> None:
         """
         ‘Rotates’ the linked list by shifting the position of its elements right or left steps
@@ -519,7 +539,6 @@ class CircularList:
         """
         TODO: Write this implementation
         """
-        pass
 
 
 if __name__ == '__main__':
@@ -633,65 +652,65 @@ if __name__ == '__main__':
     #     except Exception as e:
     #         print(type(e))
 
-    print('\n# reverse example 1')
-    test_cases = (
-        [1, 2, 3, 3, 4, 5],
-        [1, 2, 3, 4, 5],
-        ['A', 'B', 'C', 'D']
-    )
-    for case in test_cases:
-        lst = CircularList(case)
-        lst.reverse()
-        print(lst)
-
-    print('\n# reverse example 2')
-    lst = CircularList()
-    print(lst)
-    lst.reverse()
-    print(lst)
-    lst.add_back(2)
-    lst.add_back(3)
-    lst.add_front(1)
-    lst.reverse()
-    print(lst)
-
-    print('\n# reverse example 3')
-
-
-    class Student:
-        def __init__(self, name, age):
-            self.name, self.age = name, age
-
-        def __eq__(self, other):
-            return self.age == other.age
-
-        def __str__(self):
-            return str(self.name) + ' ' + str(self.age)
-
-
-    s1, s2 = Student('John', 20), Student('Andy', 20)
-    lst = CircularList([s1, s2])
-    print(lst)
-    lst.reverse()
-    print(lst)
-    print(s1 == s2)
-
-    print('\n# reverse example 4')
-    lst = CircularList([1, 'A'])
-    lst.reverse()
-    print(lst)
-    #
-    # print('\n# sort example 1')
+    # print('\n# reverse example 1')
     # test_cases = (
-    #     [1, 10, 2, 20, 3, 30, 4, 40, 5],
-    #     ['zebra2', 'apple', 'tomato', 'apple', 'zebra1'],
-    #     [(1, 1), (20, 1), (1, 20), (2, 20)]
+    #     [1, 2, 3, 3, 4, 5],
+    #     [1, 2, 3, 4, 5],
+    #     ['A', 'B', 'C', 'D']
     # )
     # for case in test_cases:
     #     lst = CircularList(case)
+    #     lst.reverse()
     #     print(lst)
-    #     lst.sort()
-    #     print(lst)
+    #
+    # print('\n# reverse example 2')
+    # lst = CircularList()
+    # print(lst)
+    # lst.reverse()
+    # print(lst)
+    # lst.add_back(2)
+    # lst.add_back(3)
+    # lst.add_front(1)
+    # lst.reverse()
+    # print(lst)
+    #
+    # print('\n# reverse example 3')
+    #
+    #
+    # class Student:
+    #     def __init__(self, name, age):
+    #         self.name, self.age = name, age
+    #
+    #     def __eq__(self, other):
+    #         return self.age == other.age
+    #
+    #     def __str__(self):
+    #         return str(self.name) + ' ' + str(self.age)
+    #
+    #
+    # s1, s2 = Student('John', 20), Student('Andy', 20)
+    # lst = CircularList([s1, s2])
+    # print(lst)
+    # lst.reverse()
+    # print(lst)
+    # print(s1 == s2)
+    #
+    # print('\n# reverse example 4')
+    # lst = CircularList([1, 'A'])
+    # lst.reverse()
+    # print(lst)
+    #
+    print('\n# sort example 1')
+    test_cases = (
+        [1, 10, 2, 20, 3, 30, 4, 40, 5],
+        ['zebra2', 'apple', 'tomato', 'apple', 'zebra1'],
+        [(1, 1), (20, 1), (1, 20), (2, 20)]
+    )
+    for case in test_cases:
+        lst = CircularList(case)
+        print(lst)
+        lst.sort()
+        print(lst)
     #
     # print('\n# rotate example 1')
     # source = [_ for _ in range(-20, 20, 7)]
