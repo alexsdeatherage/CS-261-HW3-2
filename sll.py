@@ -273,7 +273,7 @@ class LinkedList:
             return new_LL
 
         # find where slice stops and is in bounds.
-        if start_index < 0 or start_index > self.length():
+        if start_index < 0 or start_index > self.length() - 1:
             raise SLLException()
 
         if size > self.length():
@@ -414,6 +414,13 @@ if __name__ == '__main__':
     # print('\n# slice example 1')
     # list = LinkedList([1, 2, 3, 4, 5, 6, 7, 8, 9])
     # ll_slice = list.slice(1, 3)
+    # print(list, ll_slice, sep="\n")
+    # ll_slice.remove_at_index(0)
+    # print(list, ll_slice, sep="\n")
+
+    # print('\n# slice example 1')
+    # list = LinkedList([32783, 13507, -33144, 24285, -44272, 19701, 64384, 35541])
+    # ll_slice = list.slice(8, 0)
     # print(list, ll_slice, sep="\n")
     # ll_slice.remove_at_index(0)
     # print(list, ll_slice, sep="\n")
