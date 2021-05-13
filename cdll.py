@@ -454,23 +454,24 @@ class CircularList:
         """
         TODO: Write this implementation
         """
-        if self.is_empty():
-            return
-
-        if self.sentinel.next.next is self.sentinel:
-            return
-
-        # Index starts at 1
-        trail = self.sentinel.next
-        lead = self.sentinel.next.next
-        index = 1
-
-        while lead.next is not self.sentinel:
-            index += 1
-            if index % 2 == 0:
-                lead = lead.next
-            else:
-                print(1)
+        pass
+        # if self.is_empty():
+        #     return
+        #
+        # if self.sentinel.next.next is self.sentinel:
+        #     return
+        #
+        # # Index starts at 1
+        # trail = self.sentinel.next
+        # lead = self.sentinel.next.next
+        # index = 1
+        #
+        # while lead.next is not self.sentinel:
+        #     index += 1
+        #     if index % 2 == 0:
+        #         lead = lead.next
+        #     else:
+        #         print(1)
         # change pointers against to two nodes swapping
         # change nodes that are going to be swapped
         # swap1 = lead.next # 3
