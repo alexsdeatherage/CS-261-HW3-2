@@ -368,11 +368,6 @@ class CircularList:
         #
         # self.add_back(current_node.value)
 
-
-
-
-
-
     def sort(self) -> None:
         """
         TODO: Write this implementation

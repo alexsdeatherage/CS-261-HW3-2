@@ -15,7 +15,37 @@ def binary_search(arr: StaticArray, target: int) -> int:
     """
     TODO: Write this implementation
     """
-    pass
+    length = arr.size()
+    low, high = 0, length - 1
+
+    while low <= high:
+
+        if arr[0] < arr[length - 1]:
+            mid = (low + high) // 2;
+
+            if arr[mid] == target:
+                return mid
+
+            elif target < arr[mid]:
+                high = mid - 1
+
+            else:
+                low = mid + 1
+
+        else:
+            mid = (low + high) // 2;
+
+            if arr[mid] == target:
+                return mid
+
+            elif target > arr[mid]:
+                high = mid - 1
+
+            else:
+                low = mid + 1
+
+    return -1
+
 
 
 # ------------------- PROBLEM 2 - -------------------------------------------
@@ -46,7 +76,6 @@ if __name__ == "__main__":
 
 
     print('\n# problem 1 example 2')
-    """
     src = [random.randint(-10 ** 7, 10 ** 7) for _ in range(5_000_000)]
     src = sorted(set(src))
     arr = StaticArray(len(src))
@@ -72,23 +101,22 @@ if __name__ == "__main__":
         total_time += time.time()
         result &= arr[answer] == target if target in src else answer == -1
     print(result, total_time < 0.5)
-    """
 
 
-    print('\n# problem 2 example 1')
-    test_cases = (
-        ((6, 8, 12, 20, 0, 2, 5), 0),
-        ((6, 8, 12, 20, 0, 2, 5), -1),
-        ((1,), 1),
-        ((1,), 0),
-    )
-    result = []
-    for src, target in test_cases:
-        arr = StaticArray(len(src))
-        for i, value in enumerate(src):
-            arr[i] = value
-        result.append((binary_search_rotated(arr, target)))
-    print(*result)
+    # print('\n# problem 2 example 1')
+    # test_cases = (
+    #     ((6, 8, 12, 20, 0, 2, 5), 0),
+    #     ((6, 8, 12, 20, 0, 2, 5), -1),
+    #     ((1,), 1),
+    #     ((1,), 0),
+    # )
+    # result = []
+    # for src, target in test_cases:
+    #     arr = StaticArray(len(src))
+    #     for i, value in enumerate(src):
+    #         arr[i] = value
+    #     result.append((binary_search_rotated(arr, target)))
+    # print(*result)
 
 
     print('\n# problem 2 example 2')
