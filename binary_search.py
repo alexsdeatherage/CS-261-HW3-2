@@ -58,7 +58,7 @@ def binary_search_rotated(arr: StaticArray, target: int) -> int:
 
     low, high = 0, length
 
-    while low <= high:
+    while low < high:
         mid = low + (high - low)//2
         if arr[mid] == target:
             return mid
@@ -122,22 +122,22 @@ if __name__ == "__main__":
     #     result &= arr[answer] == target if target in src else answer == -1
     # print(result, total_time < 0.5)
 
-    # print('\n# problem 2 example 1')
-    # test_cases = (
-    #     # ((6, 8, 12, 20, 0, 2, 5, 9), 0),
-    #     # ((6, 8, 12, 20, 0, 2, 5, 9), -1),
-    #     # ((1,), 1),
-    #     # ((1,), 0),
-    #     ((-689518409, -304117705, 922976428), -1000000000),
-    #     ((517391563, 720581049, 840517417, 929287243, -867829919, -759633569, -711879816, -589718124, 87297208), -867829919)
-    # )
-    # result = []
-    # for src, target in test_cases:
-    #     arr = StaticArray(len(src))
-    #     for i, value in enumerate(src):
-    #         arr[i] = value
-    #     result.append((binary_search_rotated(arr, target)))
-    # print(*result)
+    print('\n# problem 2 example 1')
+    test_cases = (
+        ((6, 8, 12, 20, 0, 2, 5, 9), 0),
+        ((6, 8, 12, 20, 0, 2, 5, 9), -1),
+        ((1,), 1),
+        ((1,), 0),
+        ((-689518409, -304117705, 922976428), -1000000000),
+        ((517391563, 720581049, 840517417, 929287243, -867829919, -759633569, -711879816, -589718124, 87297208), -867829919)
+    )
+    result = []
+    for src, target in test_cases:
+        arr = StaticArray(len(src))
+        for i, value in enumerate(src):
+            arr[i] = value
+        result.append((binary_search_rotated(arr, target)))
+    print(*result)
 
     print('\n# problem 2 example 2')
 
