@@ -63,6 +63,9 @@ def binary_search_rotated(arr: StaticArray, target: int) -> int:
     low, high = 0, length - 1
     pivot_pt = find_pivot(arr, low, high)
 
+    if pivot_pt == 0:
+        return search(arr, 0, high, target)
+
     if target < arr[0]:
         return search(arr, pivot_pt, high, target)
     else:
@@ -79,6 +82,8 @@ def find_pivot(arr, low, high):
                 high = pivot - 1
             else:
                 low = pivot + 1
+
+    return 0
 
 
 def search(arr, low, high, target):
@@ -178,4 +183,3 @@ if __name__ == "__main__":
         total_time += time.time()
         result &= arr[answer] == target if target in src else answer == -1
     print(result, total_time < 0.5)
-
