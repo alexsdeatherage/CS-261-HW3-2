@@ -517,23 +517,60 @@ class CircularList:
         EVEN nodes.
         """
         pass
-        # if self.is_empty():
-        #     return
-        #
-        # if self.sentinel.next.next is self.sentinel:
-        #     return
-        #
-        # # Index starts at 1
-        # trail = self.sentinel.next
-        # pointer = self.sentinel.next.next
-        # index = 1
-        #
-        # while lead.next is not self.sentinel:
-        #     index += 1
-        #     if index % 2 == 0:
-        #         lead = lead.next
-        #     else:
-        #         print(1)
+        if self.is_empty():
+            return
+
+        if self.sentinel.next.next is self.sentinel:
+            return
+
+        # Index starts at 1
+        trail = self.sentinel.next
+        pointer = self.sentinel.next.next
+        first = True
+        temp_node = pointer
+
+        while temp_node.next is not self.sentinel and temp_node.next.next is not self.sentinel:
+            if first is True:
+                first = False
+                pointer = pointer.next
+
+                temp_node = pointer.prev
+
+                after_pointer = pointer.next
+                after_trail = trail.next
+
+                after_pointer.prev = after_trail
+                after_trail.next = after_pointer
+
+                pointer.next = after_trail
+                after_trail.prev = pointer
+
+                trail.next = pointer
+                pointer.prev = trail
+
+                trail = trail.next
+
+                pointer = temp_node
+            else:
+
+                pointer = pointer.next.next
+                temp_node = pointer.prev
+
+                after_pointer = pointer.next
+                after_trail = trail.next
+
+                after_pointer.prev = temp_node
+                temp_node.next = after_pointer
+
+                pointer.next = after_trail
+                after_trail.prev = pointer
+
+                trail.next = pointer
+                pointer.prev = trail
+
+                trail = trail.next
+
+                pointer = temp_node
         # change pointers against to two nodes swapping
         # change nodes that are going to be swapped
         # swap1 = lead.next # 3
@@ -713,17 +750,17 @@ if __name__ == '__main__':
     # lst.reverse()
     # print(lst)
     #
-    print('\n# sort example 1')
-    test_cases = (
-        # [1, 10, 2, 20, 3, 30, 4, 40, 5],
-        ['zebra2', 'apple', 'tomato', 'apple', 'zebra1'],
-        [(1, 1), (20, 1), (1, 20), (2, 20)]
-    )
-    for case in test_cases:
-        lst = CircularList(case)
-        print(lst)
-        lst.sort()
-        print(lst)
+    # print('\n# sort example 1')
+    # test_cases = (
+    #     # [1, 10, 2, 20, 3, 30, 4, 40, 5],
+    #     ['zebra2', 'apple', 'tomato', 'apple', 'zebra1'],
+    #     [(1, 1), (20, 1), (1, 20), (2, 20)]
+    # )
+    # for case in test_cases:
+    #     lst = CircularList(case)
+    #     print(lst)
+    #     lst.sort()
+    #     print(lst)
     #
     # print('\n# rotate example 1')
     # source = [_ for _ in range(-20, 20, 7)]
@@ -759,19 +796,19 @@ if __name__ == '__main__':
     #     lst.remove_duplicates()
     #     print('OUTPUT:', lst)
     #
-    # print('\n# odd_even example 1')
-    # test_cases = (
-    #     [1, 2, 3, 4, 5], list('ABCDE'),
-    #     [], [100], [100, 200], [100, 200, 300],
-    #     [100, 200, 300, 400],
-    #     [10, 'A', 20, 'B', 30, 'C', 40, 'D', 50, 'E']
-    # )
-    #
-    # for case in test_cases:
-    #     lst = CircularList(case)
-    #     print('INPUT :', lst)
-    #     lst.odd_even()
-    #     print('OUTPUT:', lst)
+    print('\n# odd_even example 1')
+    test_cases = (
+        # [1, 2, 3, 4, 5], list('ABCDE'),
+        # [], [100], [100, 200], [100, 200, 300],
+        [100, 200, 300, 400],
+        [10, 'A', 20, 'B', 30, 'C', 40, 'D', 50, 'E']
+    )
+
+    for case in test_cases:
+        lst = CircularList(case)
+        print('INPUT :', lst)
+        lst.odd_even()
+        print('OUTPUT:', lst)
 
     # print('\n# add_integer example 1')
     # test_cases = (
