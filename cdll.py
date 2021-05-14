@@ -553,7 +553,6 @@ class CircularList:
                 pointer = temp_node
 
         while temp_node.next is not self.sentinel and temp_node.next.next is not self.sentinel:
-
             pointer = pointer.next.next
             temp_node = pointer.prev
 
@@ -572,24 +571,54 @@ class CircularList:
             trail = trail.next
 
             pointer = temp_node
-        # change pointers against to two nodes swapping
-        # change nodes that are going to be swapped
-        # swap1 = lead.next # 3
-        # trail.next.prev = swap1
-        # swap1.next = trail.next
-        # swap1.prev = trail
-        # trail.next = swap1
-        #
-        # swap1.prev.next = swap1.next
-        # swap1.next.prev = swap1.prev
-        #
-        # trail = trail.next
-        # print(swap1.value)
 
     def add_integer(self, num: int) -> None:
         """
         TODO: Write this implementation
         """
+
+        current_node = self.sentinel.prev
+        num_str = str(num)
+        carry = 0
+
+        for index in range(len(num_str) - 1, 0 - 1, -1):
+            value = int(num_str[index])
+            if current_node is self.sentinel or self.is_empty():
+                self.add_front(value)
+                current_node = self.sentinel.next
+
+            else:
+                current_node.value += value
+
+
+
+
+            if current_node.value > 9:
+                carry = 1
+                current_node.value -= 10
+
+                if current_node.prev is self.sentinel:
+                    self.add_front(carry)
+
+                else:
+                    current_node.prev.value += carry
+
+            else:
+                carry = 0
+
+            current_node = current_node.prev
+
+        # if current_node.value > 9:
+        #     current_node.value = current_node.value % 10
+        #
+        #     if last_node == 0:
+        #         self.add_front(1)
+        #
+        #         last_node = self.sentinel.next.next
+        #
+        #     while last_node != current_node:
+        #         last_node.value = (last_node.value + 1) % 10
+        #         last_node = last_node.next
 
 
 if __name__ == '__main__':
@@ -797,29 +826,29 @@ if __name__ == '__main__':
     #     lst.remove_duplicates()
     #     print('OUTPUT:', lst)
     #
-    print('\n# odd_even example 1')
-    test_cases = (
-        [1, 2, 3, 4, 5], list('ABCDE'),
-        [], [100], [100, 200], [100, 200, 300],
-        [100, 200, 300, 400],
-        [10, 'A', 20, 'B', 30, 'C', 40, 'D', 50, 'E']
-    )
-
-    for case in test_cases:
-        lst = CircularList(case)
-        print('INPUT :', lst)
-        lst.odd_even()
-        print('OUTPUT:', lst)
-
-    # print('\n# add_integer example 1')
+    # print('\n# odd_even example 1')
     # test_cases = (
-    #   ([1, 2, 3], 10456),
-    #   ([], 25),
-    #   ([2, 0, 9, 0, 7], 108),
-    #    ([9, 9, 9], 9_999_999),
+    #     [1, 2, 3, 4, 5], list('ABCDE'),
+    #     [], [100], [100, 200], [100, 200, 300],
+    #     [100, 200, 300, 400],
+    #     [10, 'A', 20, 'B', 30, 'C', 40, 'D', 50, 'E']
     # )
-    # for list_content, integer in test_cases:
-    #    lst = CircularList(list_content)
-    # print('INPUT :', lst, 'INTEGER', integer)
-    # lst.add_integer(integer)
-    # print('OUTPUT:', lst)
+    #
+    # for case in test_cases:
+    #     lst = CircularList(case)
+    #     print('INPUT :', lst)
+    #     lst.odd_even()
+    #     print('OUTPUT:', lst)
+
+    print('\n# add_integer example 1')
+    test_cases = (
+        ([1, 2, 3], 10456),
+        ([], 25),
+        ([2, 0, 9, 0, 7], 108),
+        ([9, 9, 9], 9_999_999),
+    )
+    for list_content, integer in test_cases:
+        lst = CircularList(list_content)
+    print('INPUT :', lst, 'INTEGER', integer)
+    lst.add_integer(integer)
+    print('OUTPUT:', lst)
