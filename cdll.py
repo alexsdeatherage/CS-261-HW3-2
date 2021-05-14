@@ -407,10 +407,15 @@ class CircularList:
         if self.is_empty():
             return
 
+        sentinal = self.sentinel
         current_node = self.sentinel.next
-        while current_node.next is not self.sentinel:
+        temp_node = None
+        back = False
 
+        while current_node.next is not sentinal:
             if current_node.value > current_node.next.value:
+                if back is False:
+                    temp_node = current_node
                 before_node = current_node.prev
                 after_node = current_node.next
                 if before_node is not None:
@@ -422,10 +427,18 @@ class CircularList:
                 after_node.prev = before_node
 
                 current_node.next.prev = current_node
-                current_node = self.sentinel.next
 
+                if before_node is sentinal:
+                    break
+                if before_node.value > after_node.value:
+                    back = True
+                    current_node = before_node
             else:
-                current_node = current_node.next
+                if back is True:
+                    current_node = temp_node
+                    back = False
+                else:
+                    current_node = current_node.next
 
     def rotate(self, steps: int) -> None:
         """
@@ -512,7 +525,7 @@ class CircularList:
         #
         # # Index starts at 1
         # trail = self.sentinel.next
-        # lead = self.sentinel.next.next
+        # pointer = self.sentinel.next.next
         # index = 1
         #
         # while lead.next is not self.sentinel:
