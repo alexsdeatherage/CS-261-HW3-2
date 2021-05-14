@@ -529,7 +529,7 @@ class CircularList:
         first = True
         temp_node = pointer
 
-        while temp_node.next is not self.sentinel and temp_node.next.next is not self.sentinel:
+        if temp_node.next is not self.sentinel:
             if first is True:
                 first = False
                 pointer = pointer.next
@@ -551,26 +551,27 @@ class CircularList:
                 trail = trail.next
 
                 pointer = temp_node
-            else:
 
-                pointer = pointer.next.next
-                temp_node = pointer.prev
+        while temp_node.next is not self.sentinel and temp_node.next.next is not self.sentinel:
 
-                after_pointer = pointer.next
-                after_trail = trail.next
+            pointer = pointer.next.next
+            temp_node = pointer.prev
 
-                after_pointer.prev = temp_node
-                temp_node.next = after_pointer
+            after_pointer = pointer.next
+            after_trail = trail.next
 
-                pointer.next = after_trail
-                after_trail.prev = pointer
+            after_pointer.prev = temp_node
+            temp_node.next = after_pointer
 
-                trail.next = pointer
-                pointer.prev = trail
+            pointer.next = after_trail
+            after_trail.prev = pointer
 
-                trail = trail.next
+            trail.next = pointer
+            pointer.prev = trail
 
-                pointer = temp_node
+            trail = trail.next
+
+            pointer = temp_node
         # change pointers against to two nodes swapping
         # change nodes that are going to be swapped
         # swap1 = lead.next # 3
@@ -798,8 +799,8 @@ if __name__ == '__main__':
     #
     print('\n# odd_even example 1')
     test_cases = (
-        # [1, 2, 3, 4, 5], list('ABCDE'),
-        # [], [100], [100, 200], [100, 200, 300],
+        [1, 2, 3, 4, 5], list('ABCDE'),
+        [], [100], [100, 200], [100, 200, 300],
         [100, 200, 300, 400],
         [10, 'A', 20, 'B', 30, 'C', 40, 'D', 50, 'E']
     )
