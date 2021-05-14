@@ -13,7 +13,8 @@ from static_array import *
 
 def binary_search(arr: StaticArray, target: int) -> int:
     """
-    TODO: Write this implementation
+    Receives a StaticArray and an integer target and returns the index of
+    the target element if it is present in the array or returns -1 if it is not.
     """
     length = arr.size()
     low, high = 0, length - 1
@@ -52,7 +53,8 @@ def binary_search(arr: StaticArray, target: int) -> int:
 
 def binary_search_rotated(arr: StaticArray, target: int) -> int:
     """
-    TODO: Write this implementation
+    Receives a StaticArray and an integer target and returns the index of
+    the target element if it is present in the array or returns -1 if it is not.
     """
     length = arr.size()
 
