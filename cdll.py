@@ -395,9 +395,6 @@ class CircularList:
         self.sentinel.next = self.sentinel.prev
         self.sentinel.prev = temp2
 
-        # print(self.sentinel.next.value)
-        # print(self.sentinel.prev.value)
-        # print(self.sentinel.next.next.value)
 
     def sort(self) -> None:
         """
@@ -574,7 +571,9 @@ class CircularList:
 
     def add_integer(self, num: int) -> None:
         """
-        TODO: Write this implementation
+        Receive another non-negative integer num, add it to the number already
+        stored in the linked list, and then store the result of the addition back into the list nodes,
+        one digit per node.
         """
 
         current_node = self.sentinel.prev
@@ -590,9 +589,6 @@ class CircularList:
             else:
                 current_node.value += value
 
-
-
-
             if current_node.value > 9:
                 carry = 1
                 current_node.value -= 10
@@ -607,18 +603,6 @@ class CircularList:
                 carry = 0
 
             current_node = current_node.prev
-
-        # if current_node.value > 9:
-        #     current_node.value = current_node.value % 10
-        #
-        #     if last_node == 0:
-        #         self.add_front(1)
-        #
-        #         last_node = self.sentinel.next.next
-        #
-        #     while last_node != current_node:
-        #         last_node.value = (last_node.value + 1) % 10
-        #         last_node = last_node.next
 
 
 if __name__ == '__main__':
