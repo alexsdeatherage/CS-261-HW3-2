@@ -428,11 +428,11 @@ class CircularList:
 
                 current_node.next.prev = current_node
 
-                if before_node is sentinal:
-                    break
-                if before_node.value > after_node.value:
-                    back = True
-                    current_node = before_node
+                if before_node is not sentinal:
+                    if before_node.value > after_node.value:
+                        back = True
+                        current_node = before_node
+
             else:
                 if back is True:
                     current_node = temp_node
@@ -715,7 +715,7 @@ if __name__ == '__main__':
     #
     print('\n# sort example 1')
     test_cases = (
-        [1, 10, 2, 20, 3, 30, 4, 40, 5],
+        # [1, 10, 2, 20, 3, 30, 4, 40, 5],
         ['zebra2', 'apple', 'tomato', 'apple', 'zebra1'],
         [(1, 1), (20, 1), (1, 20), (2, 20)]
     )
